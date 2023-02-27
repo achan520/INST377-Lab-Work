@@ -49,7 +49,7 @@ function moveToNextSlide() {
    else{
      slidePosition += 1;
   }
-   updateSlidePosition(); // this is how you call a function within a function
+   
   updateSlidePosition(); // this is how you call a function within a function
 }
 function moveToPrevSlide() {
@@ -60,6 +60,13 @@ function moveToPrevSlide() {
     and if so, sets your slidePosition to the last slide position in totalSlides
     if not, set the slidePosition to the current position minus one
   */
+    if(slidePosition === 0){
+      let slidePosition = totalSlides - 1;
+  }
+ 
+   else{
+     slidePosition -= 1;
+  }
   updateSlidePosition();
 }
 
