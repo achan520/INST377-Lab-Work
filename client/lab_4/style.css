@@ -152,12 +152,13 @@ form {
 */
 
 .footer {
+  position: sticky;
   flex-shrink: 0;
   padding: 1rem;
   background-color: #90b5fe;
   font-size: 1.2rem;
   font-weight: 600;
-  position: sticky;
+  
 }
 
 .footer a {
