@@ -157,7 +157,7 @@ form {
   background-color: #90b5fe;
   font-size: 1.2rem;
   font-weight: 600;
-  margin-top: -50px;
+  position: sticky;
 }
 
 .footer a {
