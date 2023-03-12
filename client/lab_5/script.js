@@ -41,7 +41,7 @@ async function mainEvent() { // the async keyword means we can make API requests
     const newList = filterList(currentList, formProps.resto);
 
     console.log(newList);
-    });
+    })
   
     // This prevents your page from becoming a list of 1000 records from the county, even if your form still has an action set on it
     submitEvent.preventDefault(); 
@@ -87,7 +87,7 @@ async function mainEvent() { // the async keyword means we can make API requests
     you should get approximately 46 results
   */
 
-    
+
 }
 
 /*
