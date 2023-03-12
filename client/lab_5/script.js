@@ -36,12 +36,28 @@ async function mainEvent() { // the async keyword means we can make API requests
     // this is substituting for a "breakpoint" - it prints to the browser to tell us we successfully submitted the form
     console.log('form submission'); 
 
+    /*
+      ## GET requests and Javascript
+        We would like to send our GET request so we can control what we do with the results
+        Let's get those form results before sending off our GET request using the Fetch API
+    
+      ## Retrieving information from an API
+        The Fetch API is relatively new,
+        and is much more convenient than previous data handling methods.
+        Here we make a basic GET request to the server using the Fetch method to the county
+    */
+
      // Basic GET request - this replaces the form Action
     const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
 
      // This changes the response from the GET into data we can use - an "object"
     currentList = await results.json();
 
+     /*
+      This array initially contains all 1,000 records from your request,
+      but it will only be defined _after_ the request resolves - any filtering on it before that
+      simply won't work.
+    */
     console.table(currentList); 
   });
 
@@ -57,27 +73,6 @@ async function mainEvent() { // the async keyword means we can make API requests
     console.log(newList);
   })
   
-    /*
-      ## GET requests and Javascript
-        We would like to send our GET request so we can control what we do with the results
-        Let's get those form results before sending off our GET request using the Fetch API
-    
-      ## Retrieving information from an API
-        The Fetch API is relatively new,
-        and is much more convenient than previous data handling methods.
-        Here we make a basic GET request to the server using the Fetch method to the county
-    */
-
-   
-
-    /*
-      This array initially contains all 1,000 records from your request,
-      but it will only be defined _after_ the request resolves - any filtering on it before that
-      simply won't work.
-    */
-    
-
-
   /*
     Now that you HAVE a list loaded, write an event listener set to your filter button
     it should use the 'new FormData(target-form)' method to read the contents of your main form
@@ -89,8 +84,6 @@ async function mainEvent() { // the async keyword means we can make API requests
     Fire it here and filter for the word "pizza"
     you should get approximately 46 results
   */
-
-
 }
 
 /*
