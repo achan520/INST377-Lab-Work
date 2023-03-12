@@ -12,17 +12,37 @@ function filterList(list, query) {
 
     Ask the TAs if you need help with this
   */
+
+    return list.filter((item) => {
+      const lowerCaseName = item.name.toLowerCase();
+      const lowerCaseQuery = query.toLowerCase();
+      return lowerCaseName.includes(lowerCaseQuery);
+    });
 }
 
 async function mainEvent() { // the async keyword means we can make API requests
   const mainForm = document.querySelector('.main_form'); // This class name needs to be set on your form before you can listen for an event on it
   // Add a querySelector that targets your filter button here
+  const filterButton = document.querySelector('.filter_button');
 
   let currentList = []; // this is "scoped" to the main event function
   
   /* We need to listen to an "event" to have something happen in our page - here we're listening for a "submit" */
   mainForm.addEventListener('submit', async (submitEvent) => { // async has to be declared on every function that needs to "await" something
-    
+  
+
+  filterButton.addEventListener('click', (event) => {
+    console.log('clicked FilterButton');
+
+    const formData = new FormData(mainForm);
+    const formProps = Object.fromEntries(formData);
+
+    console.log(formProps);
+    const newList = filterList(currentList, formProps.resto);
+
+    console.log(newList);
+    });
+  
     // This prevents your page from becoming a list of 1000 records from the county, even if your form still has an action set on it
     submitEvent.preventDefault(); 
     
