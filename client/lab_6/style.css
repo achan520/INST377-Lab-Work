@@ -168,25 +168,6 @@ form {
   margin-bottom: 5px;
 }
 
-/* Deploy this with images as direct "children" and the images should pop into shape */
-.grid {
-  display: flex;
-  justify-content: space-evenly;
-  flex-flow: wrap;
-  width: 350px;
-  height: 350px;
-  margin: 0 auto;
-}
-
-.grid img {
-  width: 150px;
-  height: 150px;
-}
-
-/*
-Form Styles
-*/
-
 form input {
   /* This is a hack to make sure our boxes line up with one another nicely */
   width: 100%;
@@ -222,6 +203,12 @@ form label {
     justify-content: center;
     align-items: center;
   }
+}
+
+.buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 /* 
