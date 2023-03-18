@@ -47,8 +47,6 @@ function filterList(list, query) {
     Using the .filter array method, 
     return a list that is filtered by comparing the item name in lower case
     to the query in lower case
-
-    Ask the TAs if you need help with this
   */
 
     return list.filter((item) => {
@@ -58,15 +56,28 @@ function filterList(list, query) {
     })
 }
 
+function cutRestaurantList(list) {
+  console.log('fired cut list');
+  const range = [...Array(15).keys()]; /* a smaller array, makes an array of 15 elements */
+  return newArray = range.map((item) => {
+    const index = getRandomIntInclusive(0, list.length - 1);
+    return list[index]
+
+  }) /* applies every function to every element inside an array and returns the new transformed element to a new array */
+
+}
+
 async function mainEvent() { // the async keyword means we can make API requests
   const mainForm = document.querySelector('.main_form'); // This class name needs to be set on your form before you can listen for an event on it
   // Add a querySelector that targets your filter button here
-  const filterButton = document.querySelector('.filter_button');
+  const filterButton = document.querySelector('#filter_button');
+  const loadDataButton = document.querySelector('#data_load');
+  const generateListButton = document.querySelector('#generate');
 
   let currentList = []; // this is "scoped" to the main event function
   
   /* We need to listen to an "event" to have something happen in our page - here we're listening for a "submit" */
-  mainForm.addEventListener('submit', async (submitEvent) => {
+  loadDataButton.addEventListener('click', async (submitEvent) => {
     submitEvent.preventDefault(); 
     
     // this is substituting for a "breakpoint" - it prints to the browser to tell us we successfully submitted the form
@@ -95,10 +106,7 @@ async function mainEvent() { // the async keyword means we can make API requests
       simply won't work.
     */
     console.table(currentList); 
-    injectHTML(currentList);
    }); // async has to be declared on every function that needs to "await" something
-
-  }
 
   filterButton.addEventListener('click', (event) => {
     console.log('clicked FilterButton');
@@ -113,6 +121,13 @@ async function mainEvent() { // the async keyword means we can make API requests
     injectHTML(newList);
   })
 
+  generateListButton.addEventListener('click', (event) => {
+    console.log('generate new list');
+    const restaurantsList = cutRestaurantList(currentList);
+    injectHTML(restaurantsList);
+
+  })
+}
 function processRestaurants(list) {
   console.log('fired restaurants list');
 
