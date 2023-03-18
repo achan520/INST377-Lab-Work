@@ -74,14 +74,17 @@ async function mainEvent() { // the async keyword means we can make API requests
   const loadDataButton = document.querySelector('#data_load');
   const generateListButton = document.querySelector('#generate');
 
+  const loadAnimation = document.querySelector('#data_load_animation');
+  loadAnimation.style.display = 'none';
+
   let currentList = []; // this is "scoped" to the main event function
   
   /* We need to listen to an "event" to have something happen in our page - here we're listening for a "submit" */
   loadDataButton.addEventListener('click', async (submitEvent) => {
-    submitEvent.preventDefault(); 
     
     // this is substituting for a "breakpoint" - it prints to the browser to tell us we successfully submitted the form
-    console.log('form submission'); 
+    console.log('Loading data');
+    loadAnimation.style.display = 'inline-block';
 
     /*
       ## GET requests and Javascript
@@ -99,6 +102,7 @@ async function mainEvent() { // the async keyword means we can make API requests
 
      // This changes the response from the GET into data we can use - an "object"
     currentList = await results.json();
+    loadAnimation.style.display = 'none';
 
      /*
       This array initially contains all 1,000 records from your request,
