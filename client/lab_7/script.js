@@ -77,7 +77,9 @@ function getRandomIntInclusive(min, max) {
   
     const loadAnimation = document.querySelector('#data_load_animation');
     loadAnimation.style.display = 'none';
+    generateListButton.classList.add('hidden');
   
+    
     let storedList = [];
     let currentList = []; // this is "scoped" to the main event function
     
@@ -104,6 +106,10 @@ function getRandomIntInclusive(min, max) {
   
        // This changes the response from the GET into data we can use - an "object"
       storedList = await results.json();
+      // Make sure generate button toggles properly when load button is clicked
+      if (storedList.length > 0){
+        generateListButton.classList.remove('hidden');
+    }
 
       loadAnimation.style.display = 'none';
       console.table(storedList); /*This array initially contains all 1,000 records from your request,*/
