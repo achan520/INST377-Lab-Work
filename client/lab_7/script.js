@@ -78,6 +78,7 @@ function getRandomIntInclusive(min, max) {
     const loadAnimation = document.querySelector('#data_load_animation');
     loadAnimation.style.display = 'none';
   
+    let storedList = [];
     let currentList = []; // this is "scoped" to the main event function
     
     /* We need to listen to an "event" to have something happen in our page - here we're listening for a "submit" */
@@ -102,9 +103,10 @@ function getRandomIntInclusive(min, max) {
       const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
   
        // This changes the response from the GET into data we can use - an "object"
-      currentList = await results.json();
+      storedList = await results.json();
+
       loadAnimation.style.display = 'none';
-      console.table(currentList); /*This array initially contains all 1,000 records from your request,*/
+      console.table(storedList); /*This array initially contains all 1,000 records from your request,*/
      }); // async has to be declared on every function that needs to "await" something
   
     filterButton.addEventListener('click', (event) => {
@@ -122,7 +124,7 @@ function getRandomIntInclusive(min, max) {
   
     generateListButton.addEventListener('click', (event) => {
       console.log('generate new list');
-      currentList = cutRestaurantList(currentList);
+      currentList = cutRestaurantList(storedList);
       console.log(currentList);
       injectHTML(currentList);
   
@@ -130,7 +132,7 @@ function getRandomIntInclusive(min, max) {
 
     textField.addEventListener('input', (event) => {
         console.log('input', event.target.value);
-        const newList = filterList(currentList, formProps.resto);
+        const newList = filterList(currentList, event.target.value);
         console.log(newList);
         injectHTML(newList);
     })
