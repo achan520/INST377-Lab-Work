@@ -66,6 +66,24 @@ function getRandomIntInclusive(min, max) {
     }) /* applies every function to every element inside an array and returns the new transformed element to a new array */
   
   }
+
+  function initMap() {
+    //38.9072° N, 77.0369° W
+    const carto = L.map('map').setView([38.98, -76.93], 13);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(carto);
+    return carto;
+
+  }
+
+  function markerPlace(array, map){
+    console.log('array for markers', array);
+    array.forEach((item) => {
+        console.log('markerPlace', item);
+    })
+  }
   
   async function mainEvent() { // the async keyword means we can make API requests
     const mainForm = document.querySelector('.main_form'); // This class name needs to be set on your form before you can listen for an event on it
@@ -77,6 +95,8 @@ function getRandomIntInclusive(min, max) {
     const loadAnimation = document.querySelector('#data_load_animation');
     loadAnimation.style.display = 'none';
     generateListButton.classList.add('hidden');
+
+    const carto = initMap();
   
     const storedData = localStorage.getItem('storedData');
     const parsedData = JSON.parse(storedData);
@@ -122,7 +142,8 @@ function getRandomIntInclusive(min, max) {
       currentList = cutRestaurantList(storedList);
       console.log(currentList);
       injectHTML(currentList);
-  
+      markerPlace(currentList, carto);
+        
     })
 
     textField.addEventListener('input', (event) => {
@@ -130,6 +151,7 @@ function getRandomIntInclusive(min, max) {
         const newList = filterList(currentList, event.target.value);
         console.log(newList);
         injectHTML(newList);
+        markerPlace(newList, carto);
     })
   }
   function processRestaurants(list) {

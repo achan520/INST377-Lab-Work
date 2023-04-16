@@ -99,6 +99,12 @@
     box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
   }
   
+  #map { 
+    width: 400px;
+    height: 380px;
+    margin-bottom: 1rem;
+   }
+
   .box {
     background-color: rgba(239, 239, 239, 0.40);
     border: 2px dashed;
