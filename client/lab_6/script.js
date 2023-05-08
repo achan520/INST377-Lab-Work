@@ -20,7 +20,7 @@ function displayRestaurants(restaurants) {
 
   // Loop through the breeds and add a new list item for each breed
   for (const restaurant of restaurants) {
-    const listItem = document.createElement('li');
+    const listItem = document.createElement('ol');
     listItem.textContent = restaurant;
     restaurant_list.appendChild(listItem);
   }
