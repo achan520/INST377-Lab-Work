@@ -9,8 +9,12 @@ generateListButton.addEventListener('click', () => {
     fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json')
     .then(response => response.json())
     .then(data => {
+      if (data !== undefined && data !== null && typeof data === 'object') {
         allRestaurants = Object.keys(data);
         displayRestaurants(allRestaurants);
+      } else {
+        console.error('Invalid data received from API');
+      }
   })
 });
 
