@@ -40,7 +40,6 @@ restaurantSearch.addEventListener('input', () => {
 });
 
 const loadButton = document.getElementById('data_load');
-const dataContainer = document.getElementById('dataContainer');
 
 // Add click event listener to the load button
 loadButton.addEventListener('click', () => {
