@@ -15,22 +15,6 @@ generateListButton.addEventListener('click', () => {
 });
 
 
-
-//Get data from API and load into the collection
-fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json')
-  .then(response => response.json())
-  .then(data => {
-    if (data.status === 'success') {
-      const dogs = Object.keys(data.message);
-      collection.data = dogs;
-      collection.save(); // Save the collection to localStorage
-      console.log('Dog breeds data loaded and stored in the collection.');
-    } else {
-      console.log('Failed to retrieve dog breeds data from API.');
-    }
-  });
-
-
 // Function to display a list of breeds
 function displayRestaurants(restaurants) {
   // Clear any existing list items
