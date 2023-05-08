@@ -18,6 +18,27 @@ generateListButton.addEventListener('click', () => {
   })
 });
 
+const loadButton = document.getElementById('loadButton');
+
+
+loadButton.addEventListener('click', () => {
+  const restaurantName = 'Example Restaurant'; // Replace with the desired restaurant name
+
+  const url = `https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json?restaurant=${encodeURIComponent(restaurantName)}`;
+
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      // Handle the loaded data
+      dataContainer.textContent = JSON.stringify(data, null, 2);
+    })
+   
+});
+
+
+
+
+
 
 // Function to display a list of breeds
 function displayRestaurants(restaurants) {
