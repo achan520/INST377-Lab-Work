@@ -24,6 +24,7 @@ async function mainEvent() { // the async keyword means we can make API requests
   const mainForm = document.querySelector('.main_form'); // This class name needs to be set on your form before you can listen for an event on it
   // Add a querySelector that targets your filter button here
   const filterButton = document.querySelector('.filter_button');
+  const generateListButton = document.querySelector('#generate');
 
   let currentList = []; // this is "scoped" to the main event function
   
@@ -71,7 +72,14 @@ async function mainEvent() { // the async keyword means we can make API requests
     const newList = filterList(currentList, formProps.resto);
 
     console.log(newList);
-  })
+  });
+
+  generateListButton.addEventListener('click', (event) => {
+    console.log('generate new list');
+    const restaurantsList = cutRestaurantList(currentList);
+    injectHTML(restaurantsList);
+
+  });
   
   /*
     Now that you HAVE a list loaded, write an event listener set to your filter button
