@@ -6,7 +6,7 @@ const restaurant_list = document.getElementById('restaurant_list');
 const restaurantSearch = document.getElementById('restaurant_search');
 let allRestaurants = [];
 generateListButton.addEventListener('click', () => {
-    fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json')
+    fetch('`https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json?restaurant=${encodeURIComponent(restaurantName)}')
     .then(response => response.json())
     .then(data => {
       if (data !== undefined && data !== null && typeof data === 'object') {
@@ -18,22 +18,7 @@ generateListButton.addEventListener('click', () => {
   })
 });
 
-const loadButton = document.getElementById('loadButton');
 
-
-loadButton.addEventListener('click', () => {
-  const restaurantName = 'Example Restaurant'; // Replace with the desired restaurant name
-
-  const url = `https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json?restaurant=${encodeURIComponent(restaurantName)}`;
-
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      // Handle the loaded data
-      dataContainer.textContent = JSON.stringify(data, null, 2);
-    })
-   
-});
 
 
 
