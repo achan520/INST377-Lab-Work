@@ -38,3 +38,25 @@ restaurantSearch.addEventListener('input', () => {
   const filteredRestaurants = allRestaurants.filter(restaurant => restaurant.toLowerCase().includes(searchString));
   displayRestaurants(filteredRestaurants);
 });
+
+const loadButton = document.getElementById('data_load');
+const dataContainer = document.getElementById('dataContainer');
+
+// Add click event listener to the load button
+loadButton.addEventListener('click', () => {
+  // Fetch the data from the URL
+  fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json')
+    .then(response => response.json())
+    .then(data => {
+      // Handle the loaded data
+      // For example, display the data in the container element
+      dataContainer.textContent = JSON.stringify(data, null, 2);
+    })
+    
+});
+
+
+
+
+
+
