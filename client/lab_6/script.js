@@ -9,7 +9,7 @@ generateListButton.addEventListener('click', () => {
     fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json')
     .then(response => response.json())
     .then(data => {
-        allRestaurants = Object.keys(data.message);
+        allRestaurants = Object.keys(data);
         displayRestaurants(allRestaurants);
   })
 });
