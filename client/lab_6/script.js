@@ -8,10 +8,10 @@ const restaurantSearch = document.getElementById('restaurant_search');
 let allRestaurants = [];
 generateListButton.addEventListener('click', () => {
   fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json')
-    .then(response => response.json())
-    .then(data => {
-        allRestaurants = Object.keys(data);
-        displayRestaurants(allRestaurants);
+  .then(response => response.json())
+  .then(data => {
+      allRestaurants = Object.keys(data);
+      displayRestaurants(allRestaurants);
     
 })
 });
