@@ -39,20 +39,7 @@ restaurantSearch.addEventListener('input', () => {
   displayRestaurants(filteredRestaurants);
 });
 
-const loadButton = document.getElementById('data_load');
 
-// Add click event listener to the load button
-loadButton.addEventListener('click', () => {
-  // Fetch the data from the URL
-  fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json')
-    .then(response => response.json())
-    .then(data => {
-      // Handle the loaded data
-      // For example, display the data in the container element
-      dataContainer.textContent = JSON.stringify(data, null, 2);
-    })
-    
-});
 
 
 
