@@ -41,12 +41,12 @@ loadButton.addEventListener('click', () => {
 
 
 // Function to display a list of breeds
-function displayRestaurants(restaurants) {
+function displayRestaurants(Restaurant) {
   // Clear any existing list items
   restaurant_list.innerHTML = '';
 
   // Loop through the breeds and add a new list item for each breed
-  for (const restaurant of restaurants) {
+  for (const restaurant of Restaurant) {
     const listItem = document.createElement('li');
     listItem.textContent = restaurant;
     restaurant_list.appendChild(listItem);
